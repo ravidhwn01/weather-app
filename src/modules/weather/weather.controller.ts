@@ -1,4 +1,4 @@
-import { Controller, Get} from '@nestjs/common';
+import { Body, Controller, Get, Post} from '@nestjs/common';
 import { WeatherService } from './weather.service';
 
 
@@ -6,9 +6,9 @@ import { WeatherService } from './weather.service';
 export class WeatherController {
   constructor(private readonly weatherService: WeatherService) {}
 
-  @Get()
-  findAll() {
-    return this.weatherService.findAll();
+  @Post()
+  findAll(@Body() body:any) {
+    return this.weatherService.findAll(body.city);
   }
 
   
